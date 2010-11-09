@@ -1,0 +1,27 @@
+<% form_for([:admin, @firm, @worker]) do |f| %>
+  <p>
+  	<%= render 'error_msg', :target => @worker %>  
+  </p>
+  
+  <p>
+    Imię i nazwisko<br>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :Wiek %><br />
+    <%= f.text_field :age %>
+  </p>
+  <p>
+  	 <%= f.label :gender, "Płeć:" %>
+        <%=
+          f.select :gender,
+                       [["Kobieta", "Kobieta"], ["Mężczyzna", "Mężczyzna"]], 
+                      :prompt => "Wybierz płeć"
+        %>
+  </p>	
+  <p>
+   	<%= f.submit 'Zapisz' %>
+  </p>
+  
+<% end %>

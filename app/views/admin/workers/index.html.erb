@@ -1,0 +1,13 @@
+<a href="/">Strona główna</a>
+<br><br>
+<h2>Lista pracowników</h2>
+<% @workers.each do |worker| %>
+Imię i Nazwisko: <%=h worker.name%><br>
+Wiek: <%=h worker.age%><br>
+Płeć: <%=h worker.gender%><br>
+<%= link_to 'Edytuj pracownika', edit_admin_firm_worker_path(@firm, worker) %>
+<%= link_to 'Usun pracownika', admin_firm_worker_path(@firm, worker), :method => :delete %>
+<br><br>
+<%end%>
+<%= link_to 'Dodaj pracownika', new_admin_firm_worker_path(@firm) %><br>
+<%= link_to 'Wróć', admin_firms_path %>

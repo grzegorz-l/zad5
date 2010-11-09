@@ -1,0 +1,25 @@
+<a href="/">Strona główna</a>
+<br><br>
+<h2>Lista firm</h2>
+<br>
+
+  <%= form_for @search, :url => admin_firms_path, :html => {:method => :get} do |f| %>
+    <%= f.label :title_like, "Nazwa" %>
+    <%= f.text_field :title_like %>
+    <%= f.submit "Szukaj" %>
+
+  <% end %>
+  <br>
+<% @firms.each do |firm| %>
+	Nazwa: <%=h firm.title %> <br>
+	Opis: <%=h firm.description %> <br>
+	
+	<%= link_to 'Lista pracowników', admin_firm_workers_path(firm) %>
+	<%= link_to 'Edytuj', edit_admin_firm_path(firm) %>
+	<%= link_to 'Usun', admin_firm_path(firm), :method => :delete %><br>
+	<br>
+<% end %>
+
+<%= will_paginate %><br>
+<%= link_to 'Nowa firma', new_admin_firm_path %>
+
